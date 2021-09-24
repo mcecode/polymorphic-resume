@@ -1,0 +1,146 @@
+\usecolors[ral]
+\setvariable{colors}{text}{RAL9005}
+\setvariable{colors}{background}{RAL9003}
+\setvariable{colors}{blockquote}{RAL7011}
+\setvariable{colors}{link}{RAL5015}
+\setvariable{colors}{code}{RAL9018}
+
+\mainlanguage[$if(lang)$$lang$$else$en$endif$]
+
+$if(pagetitle)$
+\pdfbackendsetinfo{Title}{$pagetitle$}
+$endif$
+$if(author-meta)$
+\pdfbackendsetinfo{Author}{$author-meta$}
+$endif$
+$if(version-meta)$
+\pdfbackendsetinfo{Version}{$version-meta$}
+$endif$
+$if(description-meta)$
+\pdfbackendsetinfo{Description}{$description-meta$}
+$endif$
+
+\setuppapersize[$if(papersize)$$papersize$$else$letter$endif$]
+\setuplayout[
+  topspace=1in,
+  height=middle,
+  backspace=1in,
+  width=middle,
+  header=0pt,
+  footer=0pt,
+]
+\setupbackgrounds[paper][
+  background=color,
+  backgroundcolor=\getvariable{colors}{background},
+]
+\setupcolors[textcolor=\getvariable{colors}{text}]
+
+\definefontfeature[default][default][
+  script=latn,
+  protrusion=quality,
+  expansion=quality,
+  itlc=yes,
+  textitalics=yes,
+  onum=yes,
+  pnum=yes,
+]
+\definefontfeature[default:tnum][default][tnum=yes, pnum=no]
+\definefontfeature[smallcaps][
+  script=latn,
+  protrusion=quality,
+  expansion=quality,
+  smcp=yes,
+  onum=yes,
+  pnum=yes,
+]
+\setupalign[hz, hanging, nothyphenated]
+\setupitaliccorrection[global, always]
+\setupbodyfontenvironment[default][em=italic]
+\setupbodyfont[dejavu, 10pt]
+
+\setuphead[section][
+  style=\tfd,
+  align=middle,
+  after={\setupalign[middle]},
+  number=no,
+]
+% Higher heading styles cascade down so 'align' and 'after' need to be set back
+% to being 'flushleft' here, else, the whole document will be center aligned.
+\setuphead[subsection][
+  style=\tfc,
+  align=flushleft,
+  after={\setupalign[flushleft]},
+]
+\setuphead[subsubsection][style=\tfb]
+\setuphead[subsubsubsection][style=\tfa]
+
+\setupwhitespace[medium]
+
+\setupinteraction[
+  state=start,
+  style=\bi,
+  color=\getvariable{colors}{link},
+]
+
+\definedescription[description][
+  width=fit,
+  headstyle=\bf,
+  margin=standard,
+  alternative=hanging,
+]
+
+\defineitemgroup[enumerate]
+\setupitemgroup[enumerate][each][fit][
+  distance=0.5em,
+  style={\feature[+][default:tnum]},
+]
+\setupitemgroup[itemize][each][autointro]
+
+\setupfloat[figure][default={force, nonumber}]
+\setupexternalfigure[maxwidth=\makeupwidth,  maxheight=\makeupheight]
+
+\defineframed[blockquote][
+  topframe=off,
+  bottomframe=off,
+  rightframe=off,
+  framecolor=\getvariable{colors}{blockquote},
+  rulethickness=0.25em,
+  offset=none,
+  align=normal,
+]
+\setupdelimitedtext[blockquote][
+  before={\blank\startframed[blockquote]},
+  after=\stopframed\blank,
+  style=\it,
+  color=\getvariable{colors}{blockquote},
+]
+
+\defineframed[code][
+  width=broad,
+  frame=none,
+  offset=2em,
+  % I am not sure why but when using 'offset' with 'framed' to add padding when
+  % wrapping other elements, there seems to be a little over '1em's worth of
+  % extra space added to the top. 'toffset' is used here to correct that.
+  toffset=-1.5em,
+  background=color,
+  backgroundcorner=round,
+  backgroundcolor=\getvariable{colors}{code},
+  align=normal,
+]
+\setuptyping[typing][
+  before={\blank\startframed[code]},
+  after=\stopframed\blank,
+]
+
+\setupfloat[table][default={force, nonumber}]
+\setupxtable[frame=off]
+\setupxtable[head][topframe=on, bottomframe=on]
+\setupxtable[body][]
+\setupxtable[foot][bottomframe=on]
+
+\starttext
+
+$body$
+
+\stoptext

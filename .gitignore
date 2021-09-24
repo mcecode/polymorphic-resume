@@ -1,0 +1,6 @@
+build
+media/*
+!media/sample.png
+!media/sample.jpg
+src/*
+!src/sample.md
