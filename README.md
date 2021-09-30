@@ -1,6 +1,8 @@
 # Polymorphic Resume
 
-I was dusting off my resume and wanted a way to write it in Markdown then convert it into other formats. This is so I can separate composing its content and structure with setting its layout and design. I already knew about Pandoc and was using it for simple conversions, but I did not know how to use it for creating PDFs, which is probably the most important format your resume can be in. After finding [pandoc_resume](https://github.com/mszep/pandoc_resume) and some digging around in the [Pandoc documentation](https://pandoc.org/MANUAL.html), I was inspired to make my own templates based on how I would like my resume to look.
+I was dusting off my resume and wanted a way to write it in [Markdown](https://www.markdownguide.org/getting-started) because it has an [easy to write syntax](https://www.markdownguide.org/basic-syntax) that allows you to focus on the content and structure of the document. I prefer this over using WYSIWYG editors like [Microsoft Word](https://en.wikipedia.org/wiki/Microsoft_Word) where you need to fiddle around with setting the design while you write the content. Additionally, there is a lot of support in converting Markdown into other formats that allow fine-grained control of the output document's design and layout that WYSIWYG editors may not.
+
+With that in mind, I already knew about the document converter, [Pandoc](https://pandoc.org), and was using it for basic conversions, like Markdown to HTML. However, I did not know how to use it for creating PDFs, which is probably the most important format your resume can be in. When I tried, it always gave me an error about not having a PDF engine. After searching for a while, finding [pandoc_resume](https://github.com/mszep/pandoc_resume), and digging around in the [Pandoc documentation](https://pandoc.org/MANUAL.html), I was inspired to use [ConTeXt](https://wiki.contextgarden.net/FAQ#What_is_ConTeXt.3F) as my PDF engine and make my own templates based on how I would like my resume to look.
 
 Lots of fiddling later, I had something working. So, I decided to clean it up a bit and share it here. This project does not aim to be as fully featured as [pandoc_resume does](https://github.com/mszep/pandoc_resume/issues/1). Rather, it aims to be a starter template to give others an idea of how to convert their own resume documents into other formats using Pandoc.
 
@@ -53,6 +55,14 @@ This script coverts the Markdown files inside of the `src` directory into the sp
 If `<base_names>` is omitted, all Markdown files within the `src` directory except for `sample.md` will be converted into the specified format.
 
 If both `<format>` and `<base_names>` are omitted, the format will default to `all` and all Markdown files within the `src` directory except for `sample.md` will be converted.
+
+You can run,
+
+```console
+./generate.sh all sample
+```
+
+to see an example of how the supported formats would look using `sample.md` as input.
 
 ### Example usage
 
@@ -189,7 +199,7 @@ Sets the `content` of the HTML `<meta>` element with a `name` property of `autho
 
 Default: None
 
-Sets the `content` of the HTML `<meta>` element with a `name` property of `version` and the PDF `Version` metadata. `Version` is non-standard PDF metadata, so you may need special tools like [this](https://products.groupdocs.app/metadata/pdf) to view this in a generated PDF file.
+Sets the `content` of the HTML `<meta>` element with a `name` property of `version` and the PDF `Version` metadata. `Version` is non-standard PDF metadata, so you may need specific tools like [this](https://products.groupdocs.app/metadata/pdf) to view this in a generated PDF file.
 
 #### `description-meta`
 
@@ -219,7 +229,7 @@ When converting to this format, code is highlighted with the monochrome theme.
 
 This format does not seem to support TeX math well, so Pandoc shows a warning when converting a document that has TeX macros like `\sqrt{25}`. This happens when running `./generate.sh rtf sample` as `sample.md` contains that exact macro.
 
-Additionally, this format does not seem to play well with [LibreOffice](https://www.libreoffice.org), as an error occurs when I try to open a generated RTF file that contains embedded images.
+Additionally, this format does not seem to play well with [LibreOffice](https://en.wikipedia.org/wiki/LibreOffice), as an error occurs when I try to open a generated RTF file that contains embedded images.
 
 ## Contributing
 
