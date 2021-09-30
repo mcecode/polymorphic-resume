@@ -227,10 +227,10 @@ If you find anything wrong or would like to suggest any improvements, issues and
 
 You might want to start with the following:
 
-- Updating the templates.
-- Correcting any edge cases that I might have missed with the templates.
-- Creating templates for supported formats without templates (i.e., for DOCX, ODT, or RTF formats).
-- Adding or suggesting other formats to support.
+- Updating the templates
+- Correcting any edge cases that I might have missed with the templates
+- Creating templates for supported formats without templates (i.e., for DOCX, ODT, or RTF formats)
+- Adding or suggesting other formats to support
 
 ## Third-party assets
 

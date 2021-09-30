@@ -8,7 +8,7 @@ src_dir="../src"
 templates_dir="../templates"
 
 generate_pdf() {
-  echo "Generating $1.pdf."
+  echo "Generating $1.pdf"
 
   pandoc "$src_dir/$1.md" \
     --from=markdown \
@@ -28,7 +28,7 @@ generate_pdf() {
 # unnecessary reference adjustment.
 
 generate_context() {
-  echo "Generating $1.tex."
+  echo "Generating $1.tex"
 
   output=$(
     pandoc "$src_dir/$1.md" \
@@ -45,7 +45,7 @@ generate_context() {
 }
 
 generate_html() {
-  echo "Generating $1.html."
+  echo "Generating $1.html"
 
   output=$(
     pandoc "$src_dir/$1.md" \
@@ -67,7 +67,7 @@ generate_html() {
 }
 
 generate_docx() {
-  echo "Generating $1.docx."
+  echo "Generating $1.docx"
 
   pandoc "$src_dir/$1.md" \
     --from=markdown \
@@ -78,7 +78,7 @@ generate_docx() {
 }
 
 generate_odt() {
-  echo "Generating $1.odt."
+  echo "Generating $1.odt"
 
   pandoc "$src_dir/$1.md" \
     --from=markdown \
@@ -88,7 +88,7 @@ generate_odt() {
 }
 
 generate_rtf() {
-  echo "Generating $1.rtf."
+  echo "Generating $1.rtf"
 
   pandoc "$src_dir/$1.md" \
     --from=markdown \
@@ -160,7 +160,7 @@ for base_name in $base_names; do
 
   output_dir="$build_dir/$base_name"
   if ! [ -d "$output_dir" ]; then
-    echo "Creating $(echo "$output_dir" | cut -d "/" -f 2-3) directory."
+    echo "Creating $(echo "$output_dir" | cut -d "/" -f 2-3) directory"
     mkdir --parent "$output_dir"
   fi
 
