@@ -205,11 +205,11 @@ $$x = 5$$
 
 ### Images
 
-This is an example of an inline image, ![A PNG icon from the `media` directory](sample.png). You can also use block images which are rendered as figures with their alt text as their caption:
+This is an example of an inline image, ![A PNG icon from the `assets` directory](sample.png). You can also use block images which are rendered as figures with their alt text as their caption:
 
 ![A JPEG image from [Unsplash Source](https://source.unsplash.com)](https://source.unsplash.com/random/500x500)
 
-![A JPEG image from the `media` directory](sample.jpg)
+![A JPEG image from the `assets` directory](sample.jpg)
 
 ### Footnotes
 

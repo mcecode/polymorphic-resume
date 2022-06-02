@@ -3,7 +3,7 @@
 cd $(realpath $(dirname "$0"))
 
 build_dir="../build"
-media_dir="../media"
+assets_dir="../assets"
 src_dir="../src"
 templates_dir="../templates"
 
@@ -15,11 +15,11 @@ generate_pdf() {
     --to=pdf \
     --pdf-engine=context \
     --template="$templates_dir/template.tex" \
-    --resource-path="$media_dir" \
+    --resource-path="$assets_dir" \
     --output="$build_dir/$1/$1.pdf"
 }
 
-# When transfering files from the 'media' directory to the '$build_dir/$1'
+# When transfering files from the 'assets' directory to the '$build_dir/$1'
 # directory using the '--extract-media' option, Pandoc prepends
 # '$build_dir/$1/' to any references to those media files within the output
 # document. This is not required as the media and the output document will be
@@ -36,7 +36,7 @@ generate_context() {
       --to=context \
       --standalone \
       --template="$templates_dir/template.tex" \
-      --resource-path="$media_dir" \
+      --resource-path="$assets_dir" \
       --extract-media="$build_dir/$1" |
     sed "s#$build_dir/$1/##g"
   )
@@ -58,7 +58,7 @@ generate_html() {
       --highlight-style=monochrome \
       --katex=https://cdn.jsdelivr.net/npm/katex@latest/dist/ \
       --template="$templates_dir/template.html" \
-      --resource-path="$media_dir" \
+      --resource-path="$assets_dir" \
       --extract-media="$build_dir/$1" |
     sed "s#$build_dir/$1/##g"
   )
@@ -73,7 +73,7 @@ generate_docx() {
     --from=markdown \
     --to=docx \
     --highlight-style=monochrome \
-    --resource-path="$media_dir" \
+    --resource-path="$assets_dir" \
     --output="$build_dir/$1/$1.docx"
 }
 
@@ -83,7 +83,7 @@ generate_odt() {
   pandoc "$src_dir/$1.md" \
     --from=markdown \
     --to=odt \
-    --resource-path="$media_dir" \
+    --resource-path="$assets_dir" \
     --output="$build_dir/$1/$1.odt"
 }
 
@@ -94,7 +94,7 @@ generate_rtf() {
     --from=markdown \
     --to=rtf \
     --standalone \
-    --resource-path="$media_dir" \
+    --resource-path="$assets_dir" \
     --output="$build_dir/$1/$1.rtf"
 }
 

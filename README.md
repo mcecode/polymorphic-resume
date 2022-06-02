@@ -17,13 +17,13 @@ The following packages need to be installed and be in your [`PATH`](<https://en.
 
 ## Directory structure
 
-- `build`
-  - This is where Pandoc will emit the different document formats generated.
-  - It automatically gets created when running [`generate.sh`](#generatesh).
-- [`media`](media)
+- [`assets`](assets)
   - This is where you will put the images and other media you want to locally reference in your resume/s.
   - All local media files must be referenced relative to this directory. See the [Images section in `sample.md`](src/sample.md#images) for examples.
   - The project comes with two sample images, `sample.jpg` and `sample.png`, which are stored here.
+- `build`
+  - This is where Pandoc will emit the different document formats generated.
+  - It automatically gets created when running [`generate.sh`](#generatesh).
 - [`scripts`](scripts)
   - This contains the [scripts](#scripts) that run the batch jobs.
 - [`src`](src)
@@ -93,7 +93,7 @@ outputs the following files in the `resume` directory:
 - `resume.rtf`
 - `resume.tex`
 
-Assuming the file `src/other-resume.md` exists and references the image `sample.jpg` from the `media` directory,
+Assuming the file `src/other-resume.md` exists and references the image `sample.jpg` from the `assets` directory,
 
 ```console
 ./generate.sh html other-resume
@@ -244,8 +244,8 @@ You might want to start with the following:
 
 ## Third-party assets
 
-- [`sample.jpg`](media/sample.jpg) is a [photo by Cassie Boca](https://unsplash.com/photos/EiGCgdLd_C8).
-- [`sample.png`](media/sample.png) comes from the [finance icon set by Ruma Entertainment](https://www.iconfinder.com/iconsets/finance-152).
+- [`sample.jpg`](assets/sample.jpg) is a [photo by Cassie Boca](https://unsplash.com/photos/EiGCgdLd_C8).
+- [`sample.png`](assets/sample.png) comes from the [finance icon set by Ruma Entertainment](https://www.iconfinder.com/iconsets/finance-152).
 
 ## License
 

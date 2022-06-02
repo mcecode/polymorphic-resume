@@ -1,6 +1,6 @@
 build
-media/*
-!media/sample.png
-!media/sample.jpg
+assets/*
+!assets/sample.png
+!assets/sample.jpg
 src/*
 !src/sample.md
